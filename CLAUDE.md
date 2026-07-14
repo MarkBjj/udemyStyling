@@ -19,15 +19,16 @@ Tailwind, etc., depending on what the section covers next).
 - `npm run preview` — preview production build
 
 ## Structure
-- `src/main.jsx` — entry point
+- `src/main.jsx` — entry point, imports `src/index.css` globally
 - `src/App.jsx` — renders `Header` + `AuthInputs`
-- `src/components/Header.jsx` — logo/title header
+- `src/components/Header.jsx` — logo/title header; styled by its own
+  co-located `src/components/Header.css`, imported as `./Header.css`
 - `src/components/AuthInputs.jsx` — login form (email/password) with basic
   client-side validation (`emailNotValid`, `passwordNotValid`) shown via an
-  `invalid` class
-- `src/index.css` — global styles; component styles currently live here using
-  plain selectors/classes (`#auth-inputs`, `.controls`, `.button`, etc.), not
-  scoped per-component
+  `invalid` class; still styled via the global `src/index.css`
+- `src/index.css` — global styles; remaining component styles (`#auth-inputs`,
+  `.controls`, `.button`, etc.) live here until moved out per-component like
+  `Header` was
 
 ## Conventions
 - Function components with `export default function X()`, no arrow-function
