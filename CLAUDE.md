@@ -7,10 +7,23 @@ lesson progresses (plain CSS → inline styles → CSS Modules → styled-compon
 Tailwind, etc., depending on what the section covers next).
 
 ## Stack
-- Vite (`vite.config.js`) + React 19
-- Plain CSS currently (`src/index.css`), no CSS-in-JS or utility framework installed yet
+- Vite 8 (`vite.config.js`) + React 19 — Vite 8 uses rolldown as its default
+  bundler/transformer (replacing esbuild), via `@vitejs/plugin-react@^6.0.3`
+- Plain CSS currently (`src/index.css`); `styled-components` (^6.4.3) is installed
+  but not yet used in any component
 - ESLint (`eslint src --ext js,jsx`)
 - No test runner configured
+
+## Notes
+- `npm install` requires `--legacy-peer-deps` (pre-existing, unrelated to any
+  added dependency).
+- Keep `@vitejs/plugin-react` on a major that lists the installed `vite` major
+  in its peerDependencies. `@vitejs/plugin-react@4.x` only supports vite
+  `^4 || ^5 || ^6 || ^7`; with vite 8 it still loads but passes esbuild-style
+  transform options (e.g. `jsx`) into vite's rolldown transformer, which
+  rejects them at startup ("Invalid input options ... Expected never but
+  received \"jsx\""). Fixed by upgrading to `@vitejs/plugin-react@^6.0.3`,
+  whose peerDependencies require `vite: ^8.0.0`.
 
 ## Commands
 - `npm run dev` — start dev server

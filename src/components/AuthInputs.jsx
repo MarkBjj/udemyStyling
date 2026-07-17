@@ -28,7 +28,7 @@ export default function AuthInputs() {
           <input
             type="email"
             //style={{ backgroundColor: emailNotValid ? "red" : "white" }}
-            //className={emailNotValid ? 'invalid' : undefined}
+            className={emailNotValid ? 'invalid' : undefined}
             onChange={(event) => handleInputChange("email", event.target.value)}
           />
         </p>
@@ -37,7 +37,8 @@ export default function AuthInputs() {
           <input
             type="password"
             //style={{ backgroundColor: passwordNotValid ? "red" : "white" }}
-            //className={passwordNotValid ? 'invalid' : undefined}
+            // undefined (not '' or false) so React omits the className attribute entirely when valid
+            className={passwordNotValid ? 'invalid' : undefined}
             onChange={(event) =>
               handleInputChange("password", event.target.value)
             }
