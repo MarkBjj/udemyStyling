@@ -65,7 +65,7 @@ button:focus {
 }
 
 label.invalid {
-  color: #f87171;
+  color: hsl(0, 92%, 63%);
 }
 
 input.invalid {
