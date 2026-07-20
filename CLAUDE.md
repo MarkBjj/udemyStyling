@@ -9,8 +9,9 @@ Tailwind, etc., depending on what the section covers next).
 ## Stack
 - Vite 8 (`vite.config.js`) + React 19 — Vite 8 uses rolldown as its default
   bundler/transformer (replacing esbuild), via `@vitejs/plugin-react@^6.0.3`
-- Plain CSS currently (`src/index.css`); `styled-components` (^6.4.3) is installed
-  but not yet used in any component
+- Mixed styling approaches, per-component, reflecting course progression:
+  `Header` uses a CSS Module, `AuthInputs` uses `styled-components` (^6.4.3),
+  global/leftover styles remain in `src/index.css`
 - ESLint (`eslint src --ext js,jsx`)
 - No test runner configured
 
@@ -34,14 +35,18 @@ Tailwind, etc., depending on what the section covers next).
 ## Structure
 - `src/main.jsx` — entry point, imports `src/index.css` globally
 - `src/App.jsx` — renders `Header` + `AuthInputs`
-- `src/components/Header.jsx` — logo/title header; styled by its own
-  co-located `src/components/Header.css`, imported as `./Header.css`
+- `src/components/Header.jsx` — logo/title header; styled via a co-located
+  CSS Module, `src/components/Header.module.css`, imported as
+  `import classes from "./Header.module.css"` and applied via
+  `className={classes.header}`. Selectors in the module must be classes
+  (`.header`, `.header h1`, ...) — bare element selectors (`header`, `h1`)
+  aren't scoped by CSS Modules and leak globally, defeating the point
 - `src/components/AuthInputs.jsx` — login form (email/password) with basic
-  client-side validation (`emailNotValid`, `passwordNotValid`) shown via an
-  `invalid` class; still styled via the global `src/index.css`
-- `src/index.css` — global styles; remaining component styles (`#auth-inputs`,
-  `.controls`, `.button`, etc.) live here until moved out per-component like
-  `Header` was
+  client-side validation (`emailNotValid`, `passwordNotValid`); styled with
+  `styled-components` (`ControlContainer`, `Label`, `Input`), using
+  transient props (`$invalid`) to drive conditional styles
+- `src/index.css` — global styles; remaining non-component-scoped styles
+  (`#auth-inputs`, `.controls`, `.button`, etc.) live here
 
 ## Conventions
 - Function components with `export default function X()`, no arrow-function

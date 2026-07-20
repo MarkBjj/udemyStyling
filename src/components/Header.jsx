@@ -1,12 +1,12 @@
 import logo from "../assets/logo.png";
-import "./Header.css";
+import classes from "./Header.module.css";
 
 export default function Header() {
   return (
-    <header>
+    <header className={classes.header}>
       <img src={logo} alt="A canvas" />
-      <h1>ReactArt</h1>
-      <p>A community of artists and art-lovers.</p>
+      <h1>React Art</h1>
+      <p>A community of visionaries and madmen.</p>
     </header>
   );
 }
