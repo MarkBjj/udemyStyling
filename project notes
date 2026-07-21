@@ -34,3 +34,8 @@ BODY
 
 Tailwind
 
+Tailwind's spacing scale (which w-, h-, p-, m-, etc. all pull from) is just step × 0.25rem, so:
+
+w-4 → 4 × 0.25rem = 1rem = 16px
+w-16 → 16 × 0.25rem = 4rem = 64px
+w-44 → 44 × 0.25rem = 11rem = 176px (the one I used for your logo, matching the old CSS Module value)
