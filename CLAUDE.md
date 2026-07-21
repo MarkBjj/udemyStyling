@@ -12,6 +12,9 @@ Tailwind, etc., depending on what the section covers next).
 - Mixed styling approaches, per-component, reflecting course progression:
   `Header` uses a CSS Module, `AuthInputs` uses `styled-components` (^6.4.3),
   global/leftover styles remain in `src/index.css`
+- Tailwind CSS v4 (`tailwindcss` + `@tailwindcss/vite`, ^4.3.3) added to
+  `vite.config.js` plugins and imported via `@import "tailwindcss";` at the
+  top of `src/index.css`; not yet used in any component's markup
 - ESLint (`eslint src --ext js,jsx`)
 - No test runner configured
 
