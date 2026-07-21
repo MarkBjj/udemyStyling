@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { styled } from "styled-components";
+import Button from "./Button.jsx";
+import Input from "./Input.jsx";
 
 {
   /* // use back ticks ``  */
@@ -12,51 +14,6 @@ const ControlContainer = styled.div`
   margin-bottom: 1.5rem;
 `;
 
-const Label = styled.label`
-  display: block;
-  margin-bottom: 0.5rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: ${({ $invalid }) => ($invalid ? "#ef4444" : "rgb(2, 13, 30)")};
-`;
-
-const Input = styled.input`
-  display: block;
-  width: 100%;
-  padding: 0.5rem;
-  border: 1px solid ${({ $invalid }) => ($invalid ? "#b91c1c" : "#d1d5db")};
-  border-radius: 0.25rem;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  color: ${({ $invalid }) => ($invalid ? "#f87171" : "black")};
-  background-color: ${({ $invalid }) =>
-    $invalid ? "rgb(101, 58, 58)" : "white"};
-
-  &:focus {
-    outline: none;
-    border-color: #2563eb;
-    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.5);
-  }
-`;
-
-const Button = styled.button`
-  background-color: #9a3412;
-  color: white;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #7b2cbf;
-  }
-`;
 export default function AuthInputs() {
   const [enteredEmail, setEnteredEmail] = useState("");
   const [enteredPassword, setEnteredPassword] = useState("");
@@ -81,10 +38,10 @@ export default function AuthInputs() {
     <div id="auth-inputs">
       <ControlContainer>
         <p>
-          {/* to style in component, add prop className to Label and Input, then
-          use conditional rendering to add a className when invalid */}
-          <Label $invalid={emailNotValid}>Email</Label>
+          {/* to style in component, */}
+
           <Input
+            label="Email"
             type="email"
             $invalid={emailNotValid}
             //style={{ backgroundColor: emailNotValid ? "red" : "white" }}
@@ -92,8 +49,8 @@ export default function AuthInputs() {
           />
         </p>
         <p>
-          <Label $invalid={passwordNotValid}>Password</Label>
           <Input
+            label="Password"
             type="password"
             $invalid={passwordNotValid}
             //style={{ backgroundColor: passwordNotValid ? "red" : "white" }}

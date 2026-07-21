@@ -43,8 +43,11 @@ Tailwind, etc., depending on what the section covers next).
   aren't scoped by CSS Modules and leak globally, defeating the point
 - `src/components/AuthInputs.jsx` — login form (email/password) with basic
   client-side validation (`emailNotValid`, `passwordNotValid`); styled with
-  `styled-components` (`ControlContainer`, `Label`, `Input`), using
-  transient props (`$invalid`) to drive conditional styles
+  `styled-components`. `ControlContainer` stays co-located in this file;
+  `Label`, `Input`, and `Button` are each split into their own file
+  (`src/components/Label.jsx`, `Input.jsx`, `Button.jsx`, one styled
+  component per file, `export default`) and imported in. All drive
+  conditional styles via the transient prop `$invalid`
 - `src/index.css` — global styles; remaining non-component-scoped styles
   (`#auth-inputs`, `.controls`, `.button`, etc.) live here
 
