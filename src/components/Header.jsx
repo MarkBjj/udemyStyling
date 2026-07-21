@@ -1,55 +1,19 @@
 import logo from "../assets/logo.png";
-//import classes from "./Header.module.css";
-import styled from "styled-components";
-
-//uses child selector & to style child elements of the styled component
-const StyledHeader = styled.header`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-
-  & img {
-    object-fit: contain;
-    margin-bottom: 2rem;
-    width: 11rem;
-    height: 11rem;
-  }
-
-  & h1 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    letter-spacing: 0.4em;
-    text-align: center;
-    text-transform: uppercase;
-    color: #9a3412;
-    font-family: "Times", cursive;
-    margin: 0;
-  }
-
-  & p {
-    text-align: center;
-    color: #a39191;
-    margin: 0;
-  }
-
-  @media (min-width: 768px) {
-    margin-bottom: 4rem;
-
-    & h1 {
-      font-size: 2.25rem;
-    }
-  }
-`;
 
 export default function Header() {
   return (
-    <StyledHeader>
-      <img src={logo} alt="A canvas" />
-      <h1>React Art</h1>
-      <p>A community of visionaries and madmen.</p>
-    </StyledHeader>
+    <header className="flex flex-col items-center mt-4 mb-4 p-16">
+      <img
+        src={logo}
+        className="object-contain mb-8 width-44 height-28"
+        alt="A canvas"
+      />
+      <h1 className="text-3xl font-bold tracking-widest letter-spacing-0.4em text-center uppercase text-amber-950 font-family-Helvetica margin-0">
+        React Art
+      </h1>
+      <p className="text-center color-#a39191 margin-0">
+        A community of visionaries and madmen.
+      </p>
+    </header>
   );
 }
